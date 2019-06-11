@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="95e8bf44-a070-4fcf-bd01-ba48ec6acd41" name="Default Changelist" comment="added twitter4j.properties configuration file">
-      <change beforePath="$PROJECT_DIR$/src/DirectMessageBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DirectMessageBot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="95e8bf44-a070-4fcf-bd01-ba48ec6acd41" name="Default Changelist" comment="added twitter4j.properties configuration file" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -154,7 +151,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1280" />
     <option name="y" value="163" />
     <option name="width" value="1144" />
@@ -256,7 +253,7 @@
       <workItem from="1559892769549" duration="494000" />
       <workItem from="1559905460965" duration="2566000" />
       <workItem from="1559981938114" duration="1460000" />
-      <workItem from="1560245981785" duration="8534000" />
+      <workItem from="1560245981785" duration="8650000" />
     </task>
     <task id="LOCAL-00001" summary="added twitter4j.properties configuration file">
       <created>1559412323560</created>
@@ -269,11 +266,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76764000" />
+    <option name="totallyTimeSpent" value="76880000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1020" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.5032017" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -284,7 +280,7 @@
       <window_info id="UI Designer" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295583" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.27066818" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.27066818" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.398641" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
