@@ -6,10 +6,8 @@ public class DirectMessageBot implements Runnable {
 
     private Twitter twitter;
     private String baseURL;
-    private int userInput;
 
-    public DirectMessageBot(Twitter twitter, String url, int userInput) {
-        this.userInput = userInput;
+    public DirectMessageBot(Twitter twitter, String url) {
         this.twitter = twitter;
         this.baseURL = url;
     }

@@ -13,17 +13,21 @@ import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-        final var baseURL = "https://news.google.com/news/rss/headlines/section/geo/";
+        final var baseURLDM = "https://news.google.com/news/rss/headlines/section/geo/";
+        final var statusURL = "https://news.google.com/news/rss/global";
         var tf = new TwitterFactory();
         var twitter = tf.getInstance();
         var io = new UserIO();
         var tweeter = new Tweeter(twitter);
         var directMessageSender = new DirectMessageSender(twitter);
+        var directMessageBot = new DirectMessageBot(twitter, baseURLDM);
+        var executorDm = Executors.newScheduledThreadPool(1);
+        var tweeterBot = new TweeterBot(twitter, statusURL);
+        var executorStatus = Executors.newScheduledThreadPool(1);
         var option = -1;
-        var directMessageBot = new DirectMessageBot(twitter, baseURL, option);
-        var executor = Executors.newScheduledThreadPool(1);
 
-        executor.scheduleAtFixedRate(directMessageBot, 0, 10, TimeUnit.SECONDS);
+        executorDm.scheduleAtFixedRate(directMessageBot, 0, 45, TimeUnit.SECONDS);
+        executorStatus.scheduleAtFixedRate(tweeterBot, 0, 30, TimeUnit.MINUTES);
         do {
             io.printMenu();
             option = io.getUserInput();
@@ -45,6 +49,7 @@ public class Main {
             }
         } while (option != 0);
 
-        executor.shutdownNow();
+        executorDm.shutdownNow();
+        executorStatus.shutdownNow();
     }
 }
