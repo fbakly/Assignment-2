@@ -29,16 +29,16 @@ public class DirectMessageBotSlave implements Runnable {
             hashtagsText.add(index.getText());
         }
         if (!hashtagsText.isEmpty()) {
-                try {
-                    var feedReader = new FeedReader();
-                    var feed = feedReader.read(baseURL + hashtagsText.get(0));
-                    var articles = feed.collect(Collectors.toList());
-                    var currentMessageID = twitter.sendDirectMessage(message.getSenderId(), articles.get(0).getLink().orElse("No News")).getId();
-                    twitter.destroyDirectMessage(message.getId());
-                    twitter.destroyDirectMessage(currentMessageID);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            try {
+                var feedReader = new FeedReader();
+                var feed = feedReader.read(baseURL + hashtagsText.get(0));
+                var article = feed.collect(Collectors.toList()).get(0);
+                var currentMessageID = twitter.sendDirectMessage(message.getSenderId(), article.getLink().orElse("No News")).getId();
+                new Thread(new MessageDestroyer(twitter, message.getId())).start();
+                new Thread(new MessageDestroyer(twitter, currentMessageID)).start();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else {
             try {
                 twitter.destroyDirectMessage(message.getId());

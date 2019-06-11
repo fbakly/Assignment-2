@@ -5,6 +5,10 @@ import twitter4j.TwitterFactory;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -17,31 +21,30 @@ public class Main {
         var directMessageSender = new DirectMessageSender(twitter);
         var option = -1;
         var directMessageBot = new DirectMessageBot(twitter, baseURL, option);
-        var dmBotThread = new Thread(directMessageBot);
+        var executor = Executors.newScheduledThreadPool(1);
 
-        dmBotThread.start();
+        executor.scheduleAtFixedRate(directMessageBot, 0, 10, TimeUnit.SECONDS);
         do {
             io.printMenu();
             option = io.getUserInput();
             switch (option) {
-                case 0 :
+                case 0:
                     break;
-                case 1 :
+                case 1:
                     tweeter.getText();
                     new Thread(tweeter).start();
                     break;
-                case 2 :
+                case 2:
                     directMessageSender.getScreenName();
                     directMessageSender.getText();
                     new Thread(directMessageSender).start();
                     break;
-                default :
+                default:
                     System.out.println("No such option");
                     break;
             }
         } while (option != 0);
 
-        if (option == 0)
-            directMessageBot.checkUserInput(option);
+        executor.shutdownNow();
     }
 }
