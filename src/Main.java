@@ -24,10 +24,13 @@ public class Main {
         var executorDm = Executors.newScheduledThreadPool(1);
         var tweeterBot = new TweeterBot(twitter, statusURL);
         var executorStatus = Executors.newScheduledThreadPool(1);
+        var mentionBot = new MentionBot(twitter, baseURLDM);
+        var executorMention = Executors.newScheduledThreadPool(1);
         var option = -1;
 
-        executorDm.scheduleAtFixedRate(directMessageBot, 0, 45, TimeUnit.SECONDS);
+        executorDm.scheduleAtFixedRate(directMessageBot, 0, 60, TimeUnit.SECONDS);
         executorStatus.scheduleAtFixedRate(tweeterBot, 0, 30, TimeUnit.MINUTES);
+        executorMention.scheduleAtFixedRate(mentionBot, 0, 40, TimeUnit.SECONDS);
         do {
             io.printMenu();
             option = io.getUserInput();
@@ -51,5 +54,6 @@ public class Main {
 
         executorDm.shutdownNow();
         executorStatus.shutdownNow();
+        executorMention.shutdownNow();
     }
 }
