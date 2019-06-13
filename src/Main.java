@@ -38,7 +38,7 @@ public class Main {
 
         executor.scheduleAtFixedRate(directMessageBot, 0, 1, TimeUnit.MINUTES);
         executor.scheduleAtFixedRate(tweeterBot, 0, 30, TimeUnit.MINUTES);
-        executor.scheduleAtFixedRate(mentionBot, 0, 10, TimeUnit.SECONDS);
+        executor.scheduleAtFixedRate(mentionBot, 0, 10, TimeUnit.MINUTES);
         do {
             io.printMenu();
             option = io.getUserInput();
@@ -61,5 +61,12 @@ public class Main {
         } while (option != 0);
 
         executor.shutdownNow();
+
+        if (!executor.isShutdown()) {
+            System.out.print("Shutting down");
+            while(!executor.isShutdown()){
+                System.out.print(".");
+            }
+        }
     }
 }
